@@ -7,7 +7,7 @@ import React from 'react';
   const App: React.FC = () => {
 
   const [open, setOpen] = React.useState(false);
-  const [mainBox, setMainBox] = React.useState(40);
+  const [mainBox, setMainBox] = React.useState(50);
 
   const data = [
     {
@@ -17,19 +17,21 @@ import React from 'react';
     {
       task: "code some more",
       status: "active"
+    },
+    {
+      task: "Come",
+      status: "complete"
     }
   ];
 
   React.useEffect(() => {
     console.log("Render")
     if(open) {
-      setMainBox(40);
+      setMainBox(65);
     } else if (!open){
       setMainBox(12);
     }
   },[open]);
-
-  //TODO: Make boxes bigger plan out size of filters.
 
   return (
     <>

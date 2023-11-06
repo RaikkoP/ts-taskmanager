@@ -16,7 +16,7 @@ export default function Header() {
         <>
             <div>
                 <h1 className='title'>todos</h1>
-                <p className='software'>{usedSoftware[activeSoftwareIndex]}</p>
+                <p className='software'>Software used: {usedSoftware[activeSoftwareIndex]}</p>
             </div>
         </>
     )

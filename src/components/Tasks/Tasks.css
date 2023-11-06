@@ -1,0 +1,30 @@
+.taskContainer {
+    width: 100%;
+    display: flex;
+    border: 1px solid lightgray;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.taskName {
+    font-family: 'Playpen Sans', cursive;
+    margin-left: 20px;
+    font-size: 32px;
+}
+.checkButton {
+    width: 50px;
+    height: 50px;
+    margin-left: 20px;
+    border: 1px solid lightgray;
+    border-radius: 100%;
+    background: none;
+}
+.checkButton:hover {
+    cursor: pointer;
+}
+.checkMark {
+    width: 25px;
+    height: 25px;
+    filter: invert(71%) sepia(6%) saturate(3018%) hue-rotate(118deg) brightness(90%) contrast(91%);
+}
