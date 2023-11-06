@@ -2,43 +2,31 @@ import './App.css'
 import Header from './components/Header/Header';
 import Input from './components/Input/Input';
 import Tasks from './components/Tasks/Tasks';
+import ToDo from './class/ToDo';
 import React from 'react';
 
   const App: React.FC = () => {
 
   const [open, setOpen] = React.useState(false);
   const [mainBox, setMainBox] = React.useState(50);
-
-  const data = [
-    {
-      task: "build projects",
-      status: "active"
-    },
-    {
-      task: "code some more",
-      status: "active"
-    },
-    {
-      task: "Come",
-      status: "complete"
-    }
-  ];
+  const [data, setData] = React.useState([new ToDo("test"), new ToDo("test2")]);
 
   React.useEffect(() => {
     console.log("Render")
+    console.log(data);
     if(open) {
       setMainBox(65);
     } else if (!open){
       setMainBox(12);
     }
-  },[open]);
+  },[open, data]);
 
   return (
     <>
       <Header />
       <div className='toDoContainer'>
         <div className='mainBox' style={{ height:mainBox + '%'}}>
-          <Input open={open} setOpen={setOpen}/>
+          <Input data={data} setData={setData} open={open} setOpen={setOpen}/>
           {
             open ? (
               <Tasks data={data} />
