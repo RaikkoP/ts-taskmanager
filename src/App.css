@@ -1,0 +1,35 @@
+.toDoContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 1em;
+}
+.mainBox {
+    z-index: 2;
+    position: absolute;
+    background-color: rgb(253, 253, 251);
+    border: 1px solid black;
+    border-radius: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+.mediumBox {
+    z-index: 1;
+    position: absolute;
+    background-color: rgb(253, 253, 251);
+    border: 1px solid black;
+    border-radius: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 48%;
+}
+.smallBox {
+    z-index: 0;
+    position: absolute;
+    background-color: rgb(253, 253, 251);
+    border: 1px solid black;
+    border-radius: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 46%;
+}
