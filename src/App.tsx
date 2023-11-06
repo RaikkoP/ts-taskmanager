@@ -29,6 +29,7 @@ import React from 'react';
     }
   },[open]);
 
+  //TODO: Make boxes bigger plan out size of filters.
 
   return (
     <>

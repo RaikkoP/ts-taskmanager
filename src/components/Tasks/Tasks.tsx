@@ -6,6 +6,9 @@ interface dataProps {
     }[]
 }
 
+//TODO: Implement .map for data, add styling for data
+
+
 const Task: React.FC<dataProps> = ({ data }) => {
 
     return(
