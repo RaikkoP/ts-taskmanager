@@ -1,17 +1,17 @@
 .filterContainer {
-    font-family: 'Playpen Sans', cursive;
-    display: flex;
-    width: 90%;
-    margin-left: 5%;
-    margin-right: 5%;
-    margin-top: 20px;
-    margin-bottom: 15px;
-    top: 0; 
-    box-sizing: border-box; 
+  font-family: "Playpen Sans", cursive;
+  display: flex;
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  top: 0;
+  box-sizing: border-box;
 }
 .taskAmount {
-    margin-right: 20%;
+  margin-right: 20%;
 }
 .filters {
-    margin-right: 20%;
+  margin-right: 20%;
 }

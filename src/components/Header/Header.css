@@ -1,14 +1,13 @@
-
 .title {
-    text-align: center;
-    font-size: 8em;
-    color: #ebd6d5;
-    margin-top: 20px;
-    font-family: 'Playpen Sans', cursive;
+  text-align: center;
+  font-size: 8em;
+  color: #ebd6d5;
+  margin-top: 20px;
+  font-family: "Playpen Sans", cursive;
 }
 .software {
-    font-size: 20px;
-    color: black;
-    text-align: center;
-    font-family: 'Playpen Sans', cursive;
+  font-size: 20px;
+  color: black;
+  text-align: center;
+  font-family: "Playpen Sans", cursive;
 }

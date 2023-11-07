@@ -1,17 +1,17 @@
 import './Filters.css';
+import ToDo from '../../class/ToDo';
+
 
 interface FilterProps {
-    data: {
-        task: string,
-        status: string
-    }[],
+    data: ToDo[],
     open: boolean,
     filter: string,
     setFilter: React.Dispatch<React.SetStateAction<string>>,
+    setData: React.Dispatch<React.SetStateAction<ToDo[]>>
 }
 
 
-const Filter = ({ data, open, filter, setFilter }: FilterProps) => {
+const Filter = ({ data, open, filter, setFilter, setData }: FilterProps) => {
     //All, Active, Complete, Clear Completed
 
     const onChangeFilter = (event: React.FormEvent<HTMLSelectElement>) => {
@@ -19,28 +19,33 @@ const Filter = ({ data, open, filter, setFilter }: FilterProps) => {
         setFilter(event.currentTarget.value);
     }
 
+    const deleteCompleted = () => {
+        const incompleteTasks = data.filter(task => task.status !== 'complete');
+        setData(incompleteTasks);
+    }
+
     return (
         <>
-        {
-            open ? (
-                <div className='filterContainer'>
-                <p className='taskAmount'>Amount Of Task In List: {data.length}</p>
-                <form className='filters'>
-                    <label htmlFor='filter'>Filter:</label>
-                    <select onChange={(event) => onChangeFilter(event)} value={filter}>
-                        <option value="all">All</option>
-                        <option value="complete">Complete</option>
-                        <option value="active">Active</option>
-                    </select>
-                </form>
-                <button>Clear Completed</button>
-            </div>
-            ) : (
-                <></>
-            )
-        }
-    </>
-    )  
+            {
+                open ? (
+                    <div className='filterContainer'>
+                        <p className='taskAmount'>Amount Of Task In List: {data.length}</p>
+                        <form className='filters'>
+                            <label htmlFor='filter'>Filter:</label>
+                            <select onChange={(event) => onChangeFilter(event)} value={filter}>
+                                <option value="all">All</option>
+                                <option value="complete">Complete</option>
+                                <option value="active">Active</option>
+                            </select>
+                        </form>
+                        <button onClick={() => deleteCompleted()}>Clear Completed</button>
+                    </div>
+                ) : (
+                    <></>
+                )
+            }
+        </>
+    )
 }
 
 

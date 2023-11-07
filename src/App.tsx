@@ -6,32 +6,39 @@ import ToDo from './class/ToDo';
 import React from 'react';
 import Filter from './components/Filters/Filters';
 
-  const App: React.FC = () => {
+const App: React.FC = () => {
+
+  const checkLocalData = () => {
+    const storedData = localStorage.getItem("data");
+    if (storedData) {
+      return JSON.parse(storedData);
+    } else {
+      return [new ToDo("Demo Todo")]
+    }
+  }
 
   const [open, setOpen] = React.useState(false);
   const [mainBox, setMainBox] = React.useState(50);
-  const [data, setData] = React.useState([new ToDo("test"), new ToDo("test2")]);
+  const [data, setData] = React.useState(checkLocalData);
   const [filter, setFilter] = React.useState("all");
 
   React.useEffect(() => {
-    console.log("Render")
-    console.log(data);
-    console.log(filter);
-    if(open) {
+    localStorage.setItem("data", JSON.stringify(data));
+    if (open) {
       setMainBox(65);
-    } else if (!open){
+    } else if (!open) {
       setMainBox(12);
     }
-  },[open, data, filter]);
+  }, [open, data, filter]);
 
   //TODO: ADD FILTERS, ADD LOCALSTORAGE, START BACKEND
   return (
     <>
       <Header />
       <div className='toDoContainer'>
-        <div className='mainBox' style={{ height:mainBox + '%'}}>
-          <Filter data={data} open={open} filter={filter} setFilter={setFilter}/>
-          <Input data={data} setData={setData} open={open} setOpen={setOpen}/>
+        <div className='mainBox' style={{ height: mainBox + '%' }}>
+          <Filter data={data} setData={setData} open={open} filter={filter} setFilter={setFilter} />
+          <Input data={data} setData={setData} open={open} setOpen={setOpen} />
           {
             open ? (
               <Tasks data={data} filter={filter} />
@@ -40,8 +47,8 @@ import Filter from './components/Filters/Filters';
             )
           }
         </div>
-        <div className='mediumBox' style={{ height:mainBox + 1 + '%'}}></div>
-        <div className='smallBox' style={{ height:mainBox + 2 + '%'}}></div>
+        <div className='mediumBox' style={{ height: mainBox + 1 + '%' }}></div>
+        <div className='smallBox' style={{ height: mainBox + 2 + '%' }}></div>
       </div>
     </>
   )
