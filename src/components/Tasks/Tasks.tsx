@@ -5,33 +5,60 @@ import React from 'react';
 
 
 interface dataProps {
-    data: ToDo[];
+    data: ToDo[],
+    filter: string;
+
 }
 
-const Task: React.FC<dataProps> = ({ data }) => {
+const Task: React.FC<dataProps> = ({ data, filter }) => {
     const [isClicked, setIsClicked] = React.useState(false);
 
 
     React.useEffect(() => {
         setIsClicked(false);
-    },[isClicked])
+    }, [isClicked])
 
     return (
         <>
-            {
+            {filter == 'all' ? (
                 data.map((data, index) => (
                     data.status === 'active' ? (
                         <div className="taskContainer" key={index}>
-                            <button onClick={() => {data.ifClicked(); setIsClicked(true)}} className="checkButton"></button>
+                            <button onClick={() => { data.ifClicked(); setIsClicked(true) }} className="checkButton"></button>
                             <h2 className="taskName">{data.task}</h2>
                         </div>
                     ) : (
                         <div className="taskContainer" key={index}>
-                            <button onClick={() => {data.ifClicked(); setIsClicked(true)}} className="checkButton" style={{ borderColor:'rgb(73, 187, 164)'}}><img className='checkMark' src={check} alt="CheckMark" /></button>
-                            <h2 className="taskName" style={{ textDecorationLine:'line-through', color:'rgb(73, 187, 164)'}}>{data.task}</h2>
+                            <button onClick={() => { data.ifClicked(); setIsClicked(true) }} className="checkButton" style={{ borderColor: 'rgb(73, 187, 164)' }}><img className='checkMark' src={check} alt="CheckMark" /></button>
+                            <h2 className="taskName" style={{ textDecorationLine: 'line-through', color: 'rgb(73, 187, 164)' }}>{data.task}</h2>
                         </div>
                     )
                 ))
+            ) : filter == 'complete' ? (
+                data.map((data, index) => (
+                    data.status === 'complete' ? (
+                        <div className="taskContainer" key={index}>
+                            <button onClick={() => { data.ifClicked(); setIsClicked(true) }} className="checkButton" style={{ borderColor: 'rgb(73, 187, 164)' }}><img className='checkMark' src={check} alt="CheckMark" /></button>
+                            <h2 className="taskName" style={{ textDecorationLine: 'line-through', color: 'rgb(73, 187, 164)' }}>{data.task}</h2>
+                        </div>
+                    ) : (
+                        <></>
+                    )
+                ))
+            ) : filter == 'active' ? (
+                data.map((data, index) => (
+                    data.status === 'active' ? (
+                        <div className="taskContainer" key={index}>
+                            <button onClick={() => { data.ifClicked(); setIsClicked(true) }} className="checkButton"></button>
+                            <h2 className="taskName">{data.task}</h2>
+                        </div>
+                    ) : (
+                        <></>
+                    )
+                ))
+            ) : (
+                <div></div>
+            )
             }
         </>
     )
