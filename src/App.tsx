@@ -8,6 +8,7 @@ import Filter from './components/Filters/Filters';
 
 const App: React.FC = () => {
 
+  //Check if we have localData and if we do we pull it
   const checkLocalData = () => {
     const storedData = localStorage.getItem("data");
     if (storedData) {
@@ -22,6 +23,8 @@ const App: React.FC = () => {
   const [data, setData] = React.useState(checkLocalData);
   const [filter, setFilter] = React.useState("all");
 
+  //Constantly updates localData when a rerender happens, also controls when
+  //The task list is displayed that we changed the css variable
   React.useEffect(() => {
     localStorage.setItem("data", JSON.stringify(data));
     if (open) {
@@ -31,7 +34,7 @@ const App: React.FC = () => {
     }
   }, [open, data, filter]);
 
-  //TODO: ADD FILTERS, ADD LOCALSTORAGE, START BACKEND
+  //Controls the entire application
   return (
     <>
       <Header />

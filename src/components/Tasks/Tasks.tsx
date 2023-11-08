@@ -3,7 +3,7 @@ import check from '../../assets/check.svg';
 import ToDo from '../../class/ToDo';
 import React from 'react';
 
-
+//Props dataypes
 interface dataProps {
     data: ToDo[],
     filter: string;
@@ -14,10 +14,14 @@ const Task: React.FC<dataProps> = ({ data, filter }) => {
     const [isClicked, setIsClicked] = React.useState(false);
 
 
+
+    //Helps rerender when a task is marked as completed
     React.useEffect(() => {
         setIsClicked(false);
     }, [isClicked])
 
+    //Return has long filter statements filtering what data should be shown when
+    //Main difference is that completed tasks have different css styling.
     return (
         <>
             {filter == 'all' ? (

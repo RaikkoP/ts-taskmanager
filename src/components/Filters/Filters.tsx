@@ -1,7 +1,7 @@
 import './Filters.css';
 import ToDo from '../../class/ToDo';
 
-
+//Define Types of props passed to filter component
 interface FilterProps {
     data: ToDo[],
     open: boolean,
@@ -12,13 +12,14 @@ interface FilterProps {
 
 
 const Filter = ({ data, open, filter, setFilter, setData }: FilterProps) => {
-    //All, Active, Complete, Clear Completed
 
+    //Hangles filter being changed by the select HTML element
     const onChangeFilter = (event: React.FormEvent<HTMLSelectElement>) => {
         event.preventDefault();
         setFilter(event.currentTarget.value);
     }
 
+    //When delete completed button is pressed this code deletes the selected tasks
     const deleteCompleted = () => {
         const incompleteTasks = data.filter(task => task.status !== 'complete');
         setData(incompleteTasks);
@@ -27,6 +28,7 @@ const Filter = ({ data, open, filter, setFilter, setData }: FilterProps) => {
     return (
         <>
             {
+                //We check if the tasklist is open or not, if it is we display the tasks if not we display empty fragment
                 open ? (
                     <div className='filterContainer'>
                         <p className='taskAmount'>Amount Of Task In List: {data.length}</p>
