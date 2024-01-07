@@ -3,7 +3,6 @@
 
 This is a small project I made to get some more knowledge and experience in TypeScript. I also would like to add a backend at some point to this project in Rust or NodeJS. CSS is still a bit broken on mobile view but will be fixed at some point.
 
-How to run before deployment!
 To Run Project:
   - Download for GitHub
   - run "npm install"
